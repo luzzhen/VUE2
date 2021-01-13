@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 插值表达式 -->
+        {{ msg }}  
+    </div>
+
+    <script>
+        const oDiv = document.getElementById("#app")
+        const data = "luzzhen"
+
+        const vm = new Vue({
+            el: "#app",  //或者手动挂载，通过实例的一个方法$mount("#app"),获取得到模版，这种方式可操作的方式比较多
+            data: {
+                msg: "luzzhen"
+            }
+        });
+    </script>
+</body>
+</html>
