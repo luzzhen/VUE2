@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{ luzz }}
+    </div>
+    <script>
+        //如何更改data的值   ： vm.ms
+
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                msg: "luzzhen",
+                luzz :[1,2,3,4],
+                lu:{
+                    name:"zzhen",
+                    age:18
+                }
+            }
+
+        })
+
+        // //vue中的渲染页面是异步的。
+        // vm.msg = "luzzhen1"
+        // // console.log(vm.msg,vm.$el.innerText);
+        // vm.msg = "luzzhen2"
+        // // console.log(vm.msg,vm.$el.innerText);
+        // vm.msg = "luzzhen3"
+        // // console.log(vm.msg,vm.$el.innerText);
+        
+
+        // //vm.$nextTick(callback) && Vue.nextTick(callback)  异步，
+        // //用来当数据被更改时 能够显示更改的数据
+        // vm.$nextTick(function () {
+        //     console.log(this);
+        //     console.log(vm.msg, vm.$el.innerText);
+        // })
+        // Vue.nextTick(function () {
+        //     console.log(this);
+        //     console.log(vm.msg, vm.$el.innerText);
+
+        // })
+
+        // 如果data是一个数组或者是对象
+        // 数组 ：用索引更改数组，和更改数组的长度，页面是不会从重新渲染的
+        // 对象 ：增删对象，  不会重新渲染
+            
+            // vm.luzz[4]=5
+            // console.log(vm.luzz, vm.$el.innerText);
+            // //(5) [1, 2, 3, 4, 5, __ob__: Observer] "[ 1, 2, 3, 4 ]"
+            
+            // vm.luzz.length=2
+            // console.log(vm.luzz, vm.$el.innerText);
+            // //(2) [1, 2, __ob__: Observer] "[ 1, 2, 3, 4 ]"
+            
+        // 使用变异的数组方法： push、 pop、shift、unshift、splice、sort、reverse
+        // vm.$set(要改谁, 改什么, 改成啥,)、 Vue.set(要改谁, 改什么, 改成啥,)
+        // vm.$delete(要删除谁的值, 删除哪个)
+
+            console.log(vm.$el.innerText);
+            vm.luzz.push(5)
+            vm.$nextTick(function () {
+            console.log(vm.$el.innerText);
+        })
+
+
+
+
+
+        //对象：    
+        // vm.$set(要改谁, 改什么, 改成啥,)、 Vue.set(要改谁, 改什么, 改成啥,)
+        // vm.$delete(要删除谁的值, 删除哪个)
+        
+        
+
+
+    </script>
+</body>
+
+</html>

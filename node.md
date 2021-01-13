@@ -111,7 +111,7 @@ const vm = new Vue({
     {{{name: '邓旭明', age: 80, height: '140cm', weight: '100kg'}}}
   </div>
   ```
-  
+
 - 还可在插值表达式中写表达式，如：
 
   ```html
@@ -156,6 +156,7 @@ const vm = new Vue({
   ```
 
 - 还有另外一种可能，使用了未被声明过的数据，不报错：
+
   ```html
   <!-- 此时不报错啦，why？ -->
   <!-- 在作用域上找不到，报错 -->
@@ -163,6 +164,7 @@ const vm = new Vue({
   <!-- undefined为js基本类型值，所以就不报错啦 -->
   <div id="app">{{ mrDeng.wife }}</div>
   ```
+
   ```js
   const vm = new Vue({
     el: "#app",
@@ -387,3 +389,22 @@ vm.$nextTick(function () {
 
 - 曾经 vue 用过的宏任务
   - MessageChannel 消息通道 宏任务
+
+## data值是数组、对象
+
+如果data是一个数组或者是对象
+>不会重新渲染
+
+- 数组 ：用索引更改数组，和更改数组的长度，页面是不会从重新渲染的
+- 对象 ：增删对象，  不会重新渲染
+
+>重新渲染
+
+- 数组
+  - 使用变异的数组方法： push、 pop、shift、unshift、splice、sort、reverse
+  - vm.$set(要改谁, 改什么, 改成啥,)、 Vue.set(要改谁, 改什么, 改成啥,)
+  - vm.$delete(要删除谁的值, 删除哪个)
+
+- 对象
+  - vm.$set(要改谁, 改什么, 改成啥,)、 Vue.set(要改谁, 改什么, 改成啥,)
+  - vm.$delete(要删除谁的值, 删除哪个)
