@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css" />
+    <script src="../vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="header">
+        <div class="container">
+          <div class="logo">toDoList</div>
+          <div class="input-area">
+            <input type="text" @input="inputData($event)" :value="inData" />
+            <button @click="addData()">添加</button>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <h2>
+          <span>正在进行</span>
+          <span class="mask-num"> {{ doingList.length }} </span>
+        </h2>
+        <ul class="mask-list">
+          <li v-for="(masking,doingindex) in doingList" :key="masking.id">
+            <div>
+              <input
+                type="checkbox"
+                @click="changeStatus(doingList,doingindex)"
+              />
+              <span> {{ masking.title }} </span>
+            </div>
+            <button @click="delMask(doingList,doingindex)">删除</button>
+          </li>
+        </ul>
+      </div>
+      <div class="container">
+        <h2>
+          <span>已经完成</span>
+          <span class="mask-num"> {{ doneList.length }} </span>
+        </h2>
+        <ul class="mask-list complete-list">
+          <li v-for="(marked,doneIndex) in doneList">
+            <div>
+              <input
+                type="checkbox"
+                checked
+                @click="changeStatus(doneList,doneIndex)"
+              />
+              <span> {{ marked.title }} </span>
+            </div>
+            <button @click="delMask(doneList,doneIndex)">删除</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          inData: "",
+          doingList: [
+            {
+              title: "吃饭",
+              id: 0,
+            },
+            {
+              title: "睡觉",
+              id: 1,
+            },
+            {
+              title: "打机",
+              id: 2,
+            },
+          ],
+          doneList: [],
+        },
+        methods: {
+          inputData(e) {
+            this.inData = e.target.value;
+          },
+          addData() {
+            if (this.inData === "") {
+              return;
+            }
+            this.doingList.push({
+              title: this.inData,
+              id: this.doingList.length,
+            });
+
+            this.inData = "";
+            console.log(this.doingList);
+          },
+          changeStatus(list, index) {
+            let result =  list.splice(index, 1);
+            console.log(result);
+            list === this.doingList ? this.doneList.push(...result) : this.doingList.push(...result);
+            console.log(this.doneList);
+          },
+          delMask(list,index) {
+            list === this.doingList ? this.doingList.splice(index, 1): this.doneList.splice(index, 1);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
