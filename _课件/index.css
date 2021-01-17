@@ -1,88 +1,71 @@
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
   list-style: none;
-}
-
-h2 {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 10px 0;
-}
-
-h2 .mask-num {
-  height: 20px;
-  padding: 0 5px;
-  border-radius: 20px;
-  background-color: #e6e6fa;
-  color: #666;
   font-size: 14px;
 }
-
-body {
-  background-color: #cdcdcd;
+#app {
+  width: 500px;
+  padding: 10px;;
+  margin: 30px auto;
 }
 
-.container {
-  width: 600px;
-  margin: 0 auto;
-  padding: 0 10px;
-}
-
-.header {
-  height: 50px;
-  background-color: #333;
-}
-
-.header .container {
+.control {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
-.header .container .logo {
-  width: 100px;
-  line-height: 50px;
-  color: #ddd;
-  font-size: 24px;
+.control .search {
+  display: inline-block;
+  width: 300px;
+  height: 25px;
+  padding-left: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.control .option {
+  color: #3e86f4;
+  font-size: 14px;
+  margin-left: 10px;
+  padding: 0 5px;
+  border-radius: 4px;
   cursor: pointer;
 }
 
-.header .container .input-area {
-  width: 60%;
+.control .option.active {
+  color: #fff;
+  background-color: #3e86f4;
 }
 
-.header .container .input-area input {
-  width: 80%;
-  height: 24px;
-  text-indent: 10px;
-  border-radius: 5px;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.24), 0 1px 6px rgba(0, 0, 0, 0.45) inset;
-  border: none;
-  outline: none;
-}
 
-.header .container .input-area button {
-  width: 15%;
-  height: 24px;
-  vertical-align: center;
-}
-
-.mask-list li {
+.person {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  height: 32px;
-  line-height: 32px;
-  margin-bottom: 10px;
-  padding: 0 15px;
-  border-radius: 3px;
-  border-left: 5px solid #629A9C;
-  background-color: #fff;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-bottom: 1px solid #ccc;
 }
 
-.mask-list.complete-list li {
-  border-left-color: #999;
-  opacity: .5;
+.avatar {
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.avatar img {
+  width: 50px;
+  height: 50px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.content .des {
+  color: #aaa;
+  font-size: 10px;
+  margin-top: 5px;
 }
