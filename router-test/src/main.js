@@ -1,9 +1,14 @@
 import Vue from 'vue'
 import App from './App.vue'
+import router from './router'
+
 
 Vue.config.productionTip = false
 
+
+
 new Vue({
-  // template:`<p> deng is a p </p>`,
   render: h => h(App),
+  //绑定路由实例
+  router: router
 }).$mount('#app')
